@@ -22,7 +22,11 @@ $(document).ready(function() {
 			var electricInput = document.getElementById("electric").value;
 			var gasInput = document.getElementById("gas").value;
 			var oilInput = document.getElementById("oil").value;
-			var carInput = document.getElementById("car").value;
+			var carInputP = document.getElementById("carP").value;
+			var carInputD = document.getElementById("carD").value;
+			var carInputC = document.getElementById("carC").value;
+			var bikeInput = document.getElementById("bike").value;
+			var trainInput = document.getElementById("train").value;
 			var flights4LessInput = document.getElementById("flights-4-less").value;
 			var flights4MoreInput = document.getElementById("flights-4-more").value;
 			
@@ -30,7 +34,11 @@ $(document).ready(function() {
 			var electricScore = "";
 			var gasScore = "";
 			var oilScore = "";
-			var carScore = "";
+			var carScoreP = "";
+			var carScoreD = "";
+			var carScoreC = "";
+			var bikeScore = "";
+			var trainScore = "";
 			var flights4LessScore = "";
 			var flights4MoreScore = "";
 			var newspaperScore = "";
@@ -104,7 +112,7 @@ $(document).ready(function() {
 				trainScore = (trainInput/0.101283) * 0.79;
 			}
 			// console.log("train score is: " + trainScore);
-		
+
 			if (flights4LessInput === 0 || flights4LessInput === "undefined") {
 				flights4LessScore = 0;
 			} else {
@@ -121,14 +129,15 @@ $(document).ready(function() {
 
 			// calculate scores for each category
 			var energyScore = electricScore + gasScore + oilScore;
-			var travelScore = carScore	+ flights4LessScore + flights4MoreScore;
+			var travelScore = bikeScore +trainScore + carScoreC	+carScoreD	+ carScoreP + flights4LessScore + flights4MoreScore;
 			var wasteScore = newspaperScore + alumTinScore;
 
 			// calculate total score and round to nearest whole integer
-			totalScore = Math.round(energyScore + travelScore + wasteScore);
+			totalScore = ((energyScore + travelScore + wasteScore))/1000;
 			var formattedScore = totalScore.toLocaleString("en");
 			// console.log(totalScore);
-
+//graph display
+//graph display
 function drawChart(energyScore,travelScore,wasteScore) {
 	        var data = google.visualization.arrayToDataTable([
           ['Scores', 'Core Activities'],
